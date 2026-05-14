@@ -1,0 +1,62 @@
+<h2>Leave Application Form</h2>
+
+<form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+
+  <!-- Employee Name -->
+  <label>Employee Name</label><br>
+  <input type="text" formControlName="employeeName" />
+  <div *ngIf="leaveForm.get('employeeName')?.touched && leaveForm.get('employeeName')?.invalid">
+    Required
+  </div>
+
+  <br><br>
+
+  <!-- Employee ID -->
+  <label>Employee ID</label><br>
+  <input type="text" formControlName="employeeId" />
+  <div *ngIf="leaveForm.get('employeeId')?.touched && leaveForm.get('employeeId')?.invalid">
+    Required
+  </div>
+
+  <br><br>
+
+  <!-- Email -->
+  <label>Email</label><br>
+  <input type="email" formControlName="email" />
+  <div *ngIf="leaveForm.get('email')?.touched && leaveForm.get('email')?.invalid">
+    Enter valid email
+  </div>
+
+  <br><br>
+
+  <!-- Leave Type -->
+  <label>Leave Type</label><br>
+  <select formControlName="leaveType">
+    <option value="">Select</option>
+    <option *ngFor="let type of leaveTypes" [value]="type">
+      {{ type }}
+    </option>
+  </select>
+
+  <br><br>
+
+  <!-- Dates -->
+  <label>From Date</label><br>
+  <input type="date" formControlName="fromDate" />
+
+  <br><br>
+
+  <label>To Date</label><br>
+  <input type="date" formControlName="toDate" />
+
+  <br><br>
+
+  <!-- Reason -->
+  <label>Reason</label><br>
+  <textarea formControlName="reason"></textarea>
+
+  <br><br>
+
+  <button type="submit">Submit</button>
+
+</form>
